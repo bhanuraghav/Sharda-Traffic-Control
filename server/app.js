@@ -50,6 +50,7 @@ app.use(function(req,res,next){
 });
 
 app.use('/',routes);
-app.use(express.static(path.join(__dirname,'../public')))
+// app.use(express.static(__dirname + '/assets'));
+app.use(express.static(path.join(__dirname,'../assets')))
 
 app.listen(PORT,console.log(`Server started on port ${PORT}`))
