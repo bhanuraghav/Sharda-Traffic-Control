@@ -17,13 +17,13 @@ module.exports = function(passport) {
     });
 
     passport.use('local-login', new LocalStrategy({
-        usernameField : 'email',
+        usernameField : 'licenceNo',
         passwordField : 'password',
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
-    function(req, email, password, done) { // callback with email and password from our form
-
-        User.findOne({email : email}, function(err, user) {
+    function(req, licenceNo, password, done) { // callback with licenceNo and password from our form
+        console.log('sssssssssssssssscac');
+        User.findOne({licenceNo : licenceNo}, function(err, user) {
             console.log('user : ',user);
             // if there are any errors, return the error before anything else
             if (err)
@@ -45,31 +45,33 @@ module.exports = function(passport) {
     }));
 
     passport.use('local-signup', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
-        usernameField : 'email',
+        // by default, local strategy uses username and password, we will override with licenceNo
+        usernameField : 'licenceNo',
         passwordField : 'password',
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
-    function(req, email, password, done) {
+    function(req, licenceNo, password, done) {
 
-		// find a user whose email is the same as the forms email
+		// find a user whose licenceNo is the same as the forms licenceNo
 		// we are checking to see if the user trying to login already exists
-        User.findOne({ email :  email }, function(err, user) {
+        User.findOne({ licenceNo :  licenceNo }, function(err, user) {
             // if there are any errors, return the error
+            console.log('user : ',user);
+
             if (err)
                 return done(err);
 
-            // check to see if theres already a user with that email
+            // check to see if theres already a user with that licenceNo
             if (user) {
                 return done(null, false, {message : 'Already exist'});
             } else {
 
-				// if there is no user with that email
+				// if there is no user with that licenceNo
                 // create the user
                 var newUser = new User();
 
                 // set the user's local credentials
-                newUser.email    = email;
+                newUser.licenceNo    = licenceNo;
                 newUser.password = newUser.generateHash(password); // use the generateHash function in our user model
 
 				// save the user

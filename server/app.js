@@ -14,17 +14,13 @@ const app = express();
 require('./../config/passport')(passport); 
 require('./db/mongoose');
 
-app.use('/',express.static('../views'))
-app.use('/dashboard',express.static('../views'))
-
-
 const routes= require('./../routes');
 
 app.use(express.json({limit: '50mb'}))
 app.use(express.urlencoded({extended: true}));
 
 app.use(cookieParser());
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 
 app.use(flash()); 
 app.use(methodOverride("_method"));
