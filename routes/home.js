@@ -1,14 +1,22 @@
 var express = require('express');
 var router = express.Router();
+const Challans = require('./../server/models/challan');
 
 // Get Homepage
 router.get('/',isLoggedIn, function(req, res){
-	res.redirect('/');
+	res.redirect('/dashboard');
 });
 
 router.get('/dashboard',isLoggedIn, function(req, res){
-	// console.log('req.user',req.user);
-	res.render('dashboard',{user : req.user} );
+	console.log('req.user : ',req.user);
+	Challans.find({licenceNo : req.user.licenceNo},function(err,result){
+		if(err){
+			console.log(err);
+			res.redirect('/');
+		}
+
+		res.render('dashboard',{user : req.user,challans : result});
+	})
 });
 
 module.exports = router;

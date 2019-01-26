@@ -4,8 +4,10 @@ const challanSchema = mongoose.Schema({
     challanNumber: String,
     challanAmount: Number,
     challanType: String,
-    licenseNo: String,
+    licenceNo: String,
     paymentDone: Boolean,
+    challanDate : String
 })
+//String change krni hai
 
-module.exports = mongoose.model('Challan',challanSchema);
+module.exports = mongoose.model('challans',challanSchema);
