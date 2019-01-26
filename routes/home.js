@@ -3,12 +3,12 @@ var router = express.Router();
 
 // Get Homepage
 router.get('/', function(req, res){
-	res.render('testhome');
+	res.render('login');
 });
 
 router.get('/dashboard',isLoggedIn, function(req, res){
 	// console.log('req.user',req.user);
-	res.render('dashboard',{user : req.user});
+	res.render('dashboard',{user : req.user} );
 });
 
 module.exports = router;
