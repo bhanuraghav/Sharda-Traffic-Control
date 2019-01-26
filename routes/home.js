@@ -19,6 +19,10 @@ router.get('/dashboard',isLoggedIn, function(req, res){
 	})
 });
 
+router.get('/more-info',isLoggedIn,function(req,res){
+	res.render('map-google');
+})
+
 module.exports = router;
 
 function isLoggedIn(req, res, next){
