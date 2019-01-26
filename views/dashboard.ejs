@@ -101,34 +101,42 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total CHALANS</h3>
+                            <h3 class="box-title">Total CHALLANS</h3>
                             <ul class="list-inline two-part">
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">2</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success"><%=challans.length%></span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">CHALANS PAID</h3>
+                            <h3 class="box-title">CHALLANS PAID</h3>
                             <ul class="list-inline two-part">
                                 <li>
                                     <div id="sparklinedash2"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">6</span></li>
+                                <% var paidcount = 0 %>
+                                <% var paidAmount = 0 %>
+                                <% challans.forEach(function(result){  %>
+                                    <%     if(result.paymentDone==true){ %>
+                                        <%   paidcount++; %>
+                                        <%   paidAmount += result.challanAmount; %>
+                                        <% } %>
+                                <% }) %>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple"><%=paidcount%></span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">TOTAL MONEY SPEND</h3>
+                            <h3 class="box-title">TOTAL MONEY SPENT</h3>
                             <ul class="list-inline two-part">
                                 <li>
                                     <div id="sparklinedash3"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">911</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info"><%=paidAmount%></span></li>
                             </ul>
                         </div>
                     </div>
