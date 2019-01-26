@@ -1,19 +1,27 @@
 from skimage.io import imread
 from skimage.filters import threshold_otsu
 import matplotlib.pyplot as plt
+import os
 import urllib.request
 import numpy as np
-filename = './video12.mp4'
-
+from pathlib import Path
+filename = '/home/utkarsh/Desktop/Sharda-Traffic-Control/MLbakchodi/video12.mp4'
+# print("here2")
 import cv2
 cap = cv2.VideoCapture(filename)
 # cap = cv2.VideoCapture(0)
 count = 0
+# print(3)
+path = "/home/utkarsh/Desktop/Sharda-Traffic-Control/MLbakchodi/output/frame"
+# print(3)
 while cap.isOpened():
     ret,frame = cap.read()
     if ret == True:
         # cv2.imshow('window-name',frame)
-        cv2.imwrite("./output/frame%d.jpg" % count, frame)
+        # print(1)
+        cv2.imwrite(path + "%d.jpg" % count, frame)
+
+        # cv2.imwrite("./output/frame%d.jpg" % count, frame)
         count = count + 1
         if cv2.waitKey(10) & 0xFF == ord('q'):
             break
@@ -44,7 +52,9 @@ cv2.destroyAllWindows()
 
 # car image -> grayscale image -> binary image
 import imutils
-car_image = imread("./output/frame%d.jpg"%(count-1), as_gray=True)
+# print(2)
+car_image = imread(path + "%d.jpg"%(count-1), as_gray=True)
+# car_image = imread("./output/frame%d.jpg"%(count-1), as_gray=True)
 car_image = imutils.rotate(car_image, 270)
 # car_image = imread("car.png", as_gray=True)
 # it should be a 2 dimensional array
