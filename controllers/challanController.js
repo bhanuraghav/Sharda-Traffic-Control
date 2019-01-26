@@ -18,12 +18,7 @@ const getAllChallans = async (licenseNo) => {
     return await Challan.find({licenseNo});
 }
 
-const markChallanPaid = async (challanNumber) => {
-    return await Challan.findOneAndUpdate({challanNumber},{paymentStatus: true});
-}
-
 module.exports = {
     createChallan,
-    getAllChallans,
-    markChallanPaid
+    getAllChallans
 }
