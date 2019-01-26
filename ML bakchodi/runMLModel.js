@@ -6,9 +6,9 @@ const path = require('path');
 const runModel = async (video_file_path) => {
     const options = {args:[video_file_path]}
     const data = await runPy(path.join(__dirname,'../ML\ bakchodi/PredictCharacters.py'), options);
+    return data;
     // console.log("Done");
     // return JSON.parse(data.toString().replace(/'/g,"\""));
-    return data;
 }
 
 (async () => {
