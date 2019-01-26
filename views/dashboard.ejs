@@ -160,7 +160,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>challan_id</th>
+                                            <th>Challan Number</th>
                                             <th>STATUS</th>
                                             <th>DATE</th>
                                             <th>PRICE</th>
@@ -170,29 +170,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td class="txt-oflo">1345034958</td>
-                                            <td>PAID</td>
-                                            <td class="txt-oflo">February 3, 2018</td>
-                                            <td><span class="text-success">500</span></td>
-                                            <!-- server call -->
-                                            <td><a href="/paychallan/<%=user.challannumber%>">PAY</a></td>
-                                            <td><span  class="material-icon arrow_forward"><a href="map-google.html">kerkjgke</a></span></td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td>1</td>
-                                            <td class="txt-oflo"><a href="map-google.html" >235034958</a></td>
-                                            <td>UNPAID</td>
-                                            <td class="txt-oflo">February 1, 2018</td>
-                                            <td><span class="text-success">00</span></td>
-                                            <td><a href="/paychallan/<%=user.challannumber%>">PAY</a></td>
-                                        </tr>  
-                                       
-                                       
-                                       
-                                      
+                                        <% challans.forEach(function(result,i){ %>
+                                            <tr>
+                                                    <td><%=i+1%></td>
+                                                    <td class="txt-oflo"><%=result.challanNumber%></td>
+                                                    <%if(result.paymentDone == false){ %>
+                                                        <td>UNPAID</td>
+                                                    <%}else{%>
+                                                        <td>PAID</td>
+                                                    <%}%>
+                                                    <td class="txt-oflo"><%=result.challanDate%></td>
+                                                    <td><span class="text-success"><%=result.challanAmount%></span></td>
+                                                    <!-- server call -->
+                                                    <%if(result.paymentDone == false){ %>
+                                                        <td><a href="/paychallan/<%=result.challanNumber%>">PAY</a></td>
+                                                    <%}else{%>
+                                                        <td>Already Paid</td>
+                                                    <%}%>
+                                                    <td><span  class="material-icon arrow_forward"><a href="map-google.html">kerkjgke</a></span></td>
+                                            </tr>
+                                        <% }) %>
                                     </tbody>
                                 </table>
                             </div>
