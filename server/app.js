@@ -45,6 +45,11 @@ app.use(function(req,res,next){
 	next();
 });
 
+app.get('/reg',async (req,res) => {
+	const {registerChallan} = require('../utils/register-challan.js');
+	res.send(await registerChallan());
+})
+
 app.use('/',routes);
 // app.use(express.static(__dirname + '/assets'));
 app.use(express.static(path.join(__dirname,'../assets')))

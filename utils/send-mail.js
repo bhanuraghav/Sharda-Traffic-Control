@@ -37,10 +37,9 @@ const sendMail = async (data) => {
     const output = `
         <p>Hi ${data.userDetails.name},</p>
         <p>A challan with challan#${data.challanDetails.challanNumber}
-        has been created for license#${data.challanDetails.licenseNo}. Kindly pay the challan at the earliest.</p>
-        <p>
-        Regards,
-        Traffic Police,
+        has been created for license#${data.challanDetails.licenceNo}. Kindly pay the challan at the earliest.</p>
+        <p>Regards,<br>
+        Traffic Police,<br>
         Contact: 40320402
         </p>
    `;
@@ -50,7 +49,7 @@ const sendMail = async (data) => {
         //reciever
         to: `${reciever}`,// list of receivers
 
-        subject: `Challan created with challan#${data.challanDetails.challanNumber} for License#${data.challanDetails.licenseNo}`,
+        subject: `Challan created with challan#${data.challanDetails.challanNumber} for License#${data.challanDetails.licenceNo}`,
         //test: output, // plain text body
         //html: '<b>Hello world</b>' // html body
         html: output
