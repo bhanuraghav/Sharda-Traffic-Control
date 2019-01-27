@@ -15,7 +15,7 @@ const createChallan = async (numberPlate) => {
             challanAmount = 200;
     }
     let challanData = {
-        challanNumber: `SIGJMP/${Date.now()}`,
+        challanNumber: `SIGJMP${Date.now()}`,
         challanAmount: challanAmount,
         challanType: "Signal Jumping",
         challanDate: new Date().toString(),
