@@ -2,7 +2,7 @@ const challanController = require('../controllers/challanController');
 const {sendMail} = require('./send-mail');
 const {sendSMS} = require('./send-sms');
 
-const {runModel} = require('../MLbakchodi/runMLModel.js');
+const {runModel} = require('../ML/runMLModel.js');
 
 const registerChallan = async () => {
 	const numberPlate = await runModel();
