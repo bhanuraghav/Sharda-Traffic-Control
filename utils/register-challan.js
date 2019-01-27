@@ -2,11 +2,19 @@ const challanController = require('../controllers/challanController');
 const {sendMail} = require('./send-mail');
 const {sendSMS} = require('./send-sms');
 
-const registerChallan = async (numberPlate) => {
+const {runModel} = require('../MLbakchodi/runMLModel.js');
+
+const registerChallan = async () => {
+	const numberPlate = await runModel();
+	// console.log(numberPlate);
     const data = await challanController.createChallan(numberPlate);
-    sendMail(data);
-    sendSMS(data);
-    return data;
+    console.log(data);
+    let returnData = {
+    	data: data,
+    	mailDetails: await sendMail(data),
+    	smsDetails: await sendSMS(data)
+    }
+    return returnData;
 }
 
 module.exports = {

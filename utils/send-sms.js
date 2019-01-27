@@ -10,7 +10,7 @@ const sendSMS = async (data) => {
             },
             challanDetails: {
                 challanNumber: ,
-                licenseNo: 
+                licenceNo: 
             }
         }
     */
@@ -18,7 +18,7 @@ const sendSMS = async (data) => {
    const to = data.userDetails.phone
    const text = `Hi ${data.userDetails.name},
 
-A challan with challan# ${data.challanDetails.challanNumber} has been created for license# ${data.challanDetails.licenseNo}. Kindly pay the challan at the earliest.
+A challan with challan# ${data.challanDetails.challanNumber} has been created for license# ${data.challanDetails.licenceNo}. Kindly pay the challan at the earliest.
 Regards,
 Traffic Police,
 Contact: 40320402`
