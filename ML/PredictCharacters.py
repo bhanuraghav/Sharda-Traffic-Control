@@ -1,7 +1,7 @@
 import SegmentCharacters
 import pickle
 # print("Loading model")
-filename = '/home/utkarsh/Desktop/Sharda-Traffic-Control/MLbakchodi/finalized_model.sav'
+filename = '/home/utkarsh/Desktop/Sharda-Traffic-Control/ML/finalized_model.sav'
 model = pickle.load(open(filename, 'rb'))
 # print(1)
 # print('Model loaded. Predicting characters of number plate')

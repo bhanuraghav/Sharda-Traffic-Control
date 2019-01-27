@@ -5,7 +5,7 @@ const path = require('path');
 
 const runModel = async (video_file_path) => {
     // console.log("here")
-    const options = {scriptPath: '/home/utkarsh/Desktop/Sharda-Traffic-Control/MLbakchodi'}
+    const options = {scriptPath: '/home/utkarsh/Desktop/Sharda-Traffic-Control/ML'}
     // console.log("here")
     const data = await runPy('PredictCharacters.py', options);
     return data[0];

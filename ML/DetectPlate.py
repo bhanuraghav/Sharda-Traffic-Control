@@ -5,14 +5,14 @@ import os
 import urllib.request
 import numpy as np
 from pathlib import Path
-filename = '/home/utkarsh/Desktop/Sharda-Traffic-Control/MLbakchodi/video12.mp4'
+filename = '/home/utkarsh/Desktop/Sharda-Traffic-Control/ML/video12.mp4'
 # print("here2")
 import cv2
 cap = cv2.VideoCapture(filename)
 # cap = cv2.VideoCapture(0)
 count = 0
 # print(3)
-path = "/home/utkarsh/Desktop/Sharda-Traffic-Control/MLbakchodi/output/frame"
+path = "/home/utkarsh/Desktop/Sharda-Traffic-Control/ML/output/frame"
 # print(3)
 while cap.isOpened():
     ret,frame = cap.read()
@@ -66,11 +66,11 @@ car_image = imutils.rotate(car_image, 270)
 
 gray_car_image = car_image * 255
 fig, (ax1, ax2) = plt.subplots(1, 2)
-ax1.imshow(gray_car_image, cmap="gray")
+# ax1.imshow(gray_car_image, cmap="gray")
 threshold_value = threshold_otsu(gray_car_image)
 binary_car_image = gray_car_image > threshold_value
 # print(binary_car_image)
-ax2.imshow(binary_car_image, cmap="gray")
+# ax2.imshow(binary_car_image, cmap="gray")
 # ax2.imshow(gray_car_image, cmap="gray")
 # plt.show()
 
@@ -95,7 +95,7 @@ plate_objects_cordinates = []
 plate_like_objects = []
 
 fig, (ax1) = plt.subplots(1)
-ax1.imshow(gray_car_image, cmap="gray")
+# ax1.imshow(gray_car_image, cmap="gray")
 flag =0
 # regionprops creates a list of properties of all the labelled regions
 for region in regionprops(label_image):
@@ -139,7 +139,7 @@ if(flag==0):
     plate_like_objects = []
 
     fig, (ax1) = plt.subplots(1)
-    ax1.imshow(gray_car_image, cmap="gray")
+    # ax1.imshow(gray_car_image, cmap="gray")
 
     # regionprops creates a list of properties of all the labelled regions
     for region in regionprops(label_image):
